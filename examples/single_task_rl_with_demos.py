@@ -5,7 +5,7 @@ from rlbench.action_modes.arm_action_modes import JointVelocity
 from rlbench.action_modes.gripper_action_modes import Discrete
 from rlbench.environment import Environment
 from rlbench.observation_config import ObservationConfig
-from rlbench.tasks import ReachTarget
+from rlbench.tasks import ReachTarget, BasketballInHoop
 
 
 class Agent(object):
@@ -35,23 +35,23 @@ env = Environment(
     action_mode, DATASET, obs_config, False)
 env.launch()
 
-task = env.get_task(ReachTarget)
+task = env.get_task(BasketballInHoop)
 demos = task.get_demos(2, live_demos=live_demos)
 
-agent = Agent(env.action_shape)
-agent.ingest(demos)
+# agent = Agent(env.action_shape)
+# agent.ingest(demos)
 
-training_steps = 120
-episode_length = 40
-obs = None
-for i in range(training_steps):
-    if i % episode_length == 0:
-        print('Reset Episode')
-        descriptions, obs = task.reset()
-        print(descriptions)
-    action = agent.act(obs)
-    print(action)
-    obs, reward, terminate = task.step(action)
+# training_steps = 120
+# episode_length = 40
+# obs = None
+# for i in range(training_steps):
+#     if i % episode_length == 0:
+#         print('Reset Episode')
+#         descriptions, obs = task.reset()
+#         print(descriptions)
+#     action = agent.act(obs)
+#     print(action)
+#     obs, reward, terminate = task.step(action)
 
 print('Done')
 env.shutdown()
