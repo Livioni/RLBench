@@ -119,7 +119,7 @@ DISPLAY=:99 glxgears
 If you have multiple GPUs, you can select your GPU by doing the following.
 
 ```bash
-DISPLAY=:99.<gpu_id> glxgears
+DISPLAY=:99.0 glxgears
 ```
 
 ### Running X without sudo

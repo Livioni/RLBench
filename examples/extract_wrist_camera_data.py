@@ -70,9 +70,9 @@ class CameraPositionManager:
 
         # 计算新位置
         new_pos = [
-            0.06,
+            0.055,
             0.0,
-            -0.05
+            -0.04
         ]
 
         # 计算新朝向
@@ -158,32 +158,35 @@ def get_all_task_classes():
     """
     # 已知的所有任务类列表（从rlbench/tasks/__init__.py中提取）
     task_classes = [
-        BasketballInHoop, BeatTheBuzz, BlockPyramid, ChangeChannel, ChangeClock,
-        CloseBox, CloseDoor, CloseDrawer, CloseFridge, CloseGrill, CloseJar,
-        CloseLaptopLid, CloseMicrowave, EmptyContainer, EmptyDishwasher,
-        GetIceFromFridge, HangFrameOnHanger, HitBallWithQueue, Hockey,
-        InsertOntoSquarePeg, InsertUsbInComputer, LampOff, LampOn,
-        LiftNumberedBlock, LightBulbIn, LightBulbOut, MeatOffGrill, MeatOnGrill,
-        MoveHanger, OpenBox, OpenDoor, OpenDrawer, OpenFridge, OpenGrill,
-        OpenJar, OpenMicrowave, OpenOven, OpenWashingMachine, OpenWindow,
-        OpenWineBottle, PhoneOnBase, PickAndLift, PickAndLiftSmall, PickUpCup,
-        PlaceCups, PlaceHangerOnRack, PlaceShapeInShapeSorter, PlayJenga,
-        PlugChargerInPowerSupply, PourFromCupToCup, PressSwitch, PushButton,
-        PushButtons, PutAllGroceriesInCupboard, PutBooksOnBookshelf,
-        PutBottleInFridge, PutGroceriesInCupboard, PutItemInDrawer,
-        PutKnifeInKnifeBlock, PutKnifeOnChoppingBoard, PutMoneyInSafe,
-        PutPlateInColoredDishRack, PutRubbishInBin, PutShoesInBox,
-        PutToiletRollOnStand, PutTrayInOven, PutUmbrellaInUmbrellaStand,
-        ReachAndDrag, ReachTarget, RemoveCups, ScoopWithSpatula, ScrewNail,
-        SetTheTable, SetupCheckers, SetupChess, SlideBlockToTarget,
-        SlideCabinetOpen, SlideCabinetOpenAndPlaceCups, SolvePuzzle, StackBlocks,
+        # BasketballInHoop, BeatTheBuzz, BlockPyramid, 
+        # ChangeChannel, ChangeClock,
+        # CloseBox, CloseDoor, CloseDrawer, CloseFridge, CloseGrill, CloseJar,
+        # CloseLaptopLid, CloseMicrowave, 
+        # EmptyContainer, EmptyDishwasher,
+        # GetIceFromFridge, HangFrameOnHanger, HitBallWithQueue, Hockey,
+        # InsertOntoSquarePeg, InsertUsbInComputer, LampOff, LampOn,
+        # LiftNumberedBlock, LightBulbIn, LightBulbOut, MeatOffGrill, MeatOnGrill,
+        # MoveHanger, OpenBox, OpenDoor, OpenDrawer, OpenFridge, OpenGrill,
+        # OpenJar, OpenMicrowave, OpenOven, OpenWashingMachine, OpenWindow,
+        # OpenWineBottle, PhoneOnBase, PickAndLift, PickAndLiftSmall, PickUpCup,
+        # PlaceCups, PlaceHangerOnRack, PlaceShapeInShapeSorter, PlayJenga,
+        # PlugChargerInPowerSupply, PourFromCupToCup, PressSwitch, PushButton,
+        # PushButtons, PutAllGroceriesInCupboard, PutBooksOnBookshelf,
+        # PutBottleInFridge, PutGroceriesInCupboard, PutItemInDrawer,
+        # PutKnifeInKnifeBlock, PutKnifeOnChoppingBoard, PutMoneyInSafe,
+        # PutPlateInColoredDishRack, PutRubbishInBin, PutShoesInBox,
+        # PutToiletRollOnStand, PutTrayInOven, PutUmbrellaInUmbrellaStand,
+        # ReachAndDrag, ReachTarget, RemoveCups, ScoopWithSpatula, ScrewNail,
+        # SetTheTable, SetupCheckers, SetupChess, SlideBlockToTarget,
+        # SlideCabinetOpen, SlideCabinetOpenAndPlaceCups, 
+        SolvePuzzle, StackBlocks,
         StackChairs, StackCups, StackWine, StraightenRope, SweepToDustpan,
         TakeCupOutFromCabinet, TakeFrameOffHanger, TakeItemOutOfDrawer,
         TakeLidOffSaucepan, TakeMoneyOutSafe, TakeOffWeighingScales,
         TakePlateOffColoredDishRack, TakeShoesOutOfBox, TakeToiletRollOffStand,
         TakeTrayOutOfOven, TakeUmbrellaOutOfUmbrellaStand, TakeUsbOutOfComputer,
         ToiletSeatDown, ToiletSeatUp, TurnOvenOn, TurnTap, TvOn, UnplugCharger,
-        WaterPlants, WeighingScales, WipeDesk
+        WaterPlants, WeighingScales
     ]
 
     # 按照任务名称排序
@@ -193,7 +196,7 @@ def get_all_task_classes():
 
 def main():
     # Configuration
-    episodes_per_task = 10  # Number of episodes to collect per task
+    episodes_per_task = 50  # Number of episodes to collect per task
     save_dir = 'datasets'
     os.makedirs(save_dir, exist_ok=True)
 
@@ -208,7 +211,7 @@ def main():
     obs_config = ObservationConfig()
     obs_config.set_all(False)
     obs_config.wrist_camera.set_all(True)
-    obs_config.wrist_camera.image_size = (640, 480)
+    obs_config.wrist_camera.image_size = (1280, 720)
     obs_config.wrist_camera.rgb = True
     obs_config.wrist_camera.depth_in_meters = True
     obs_config.wrist_camera.depth = True
